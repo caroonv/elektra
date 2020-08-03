@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Energy Usage Summary</title>
+        <link rel='stylesheet' href='styles.css'>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+    </head>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+
+    <body>
+        <div class='container-fluid'>
+            <h1>Electricity Usage Analysis</h1>
+            <p>I have been planning on getting solar panels and this is my attempt to analyze my energy consumption for that purpose. I wanted to analyze all the data that was available to me. If you are in the state of Texas in the United States you can go to <a href='https://www.smartmetertexas.com'>Smart Meter Texas</a> and register for a free account. You can download your usage data and track usage as granular as at 15-minute intervals. Data for all the months in past two years: 2018, 2019 is available for download and for current year 2020, upto July. </p>
+            <div class='row'>
+                <div id='container' class='col-lg-6'>
+                    <svg id='summarysvg' width=600 height=600></svg>
+                </div>
+                <div id ='container' class='col-lg-6'>
+                    <svg id='stackedsvg' width=600 height=600></svg>
+                </div>
+            </div>
+        </div>
+        <script src='summary.js'></script>
+        <script src='index.js'></script>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb primary-color">
+                <li class="breadcrumb-item active">Summary</li>
+                <li class="breadcrumb-item"><a class="white-text" href='/elektra/annually/index.html'>Years</a></li>
+                <li class="breadcrumb-item"><a class="white-text" href='monthly/all/index.html'>Months</a></li>
+                <li class="breadcrumb-item"><a class="white-text" href='/elektra/daily/index.html'>Days</a></li>
+            </ol>
+        </nav>
+    </body>
+</html>
