@@ -1,37 +1,35 @@
 <html>
-    <script src='https://d3js.org/d3.v5.min.js'></script>
-    <style> rect {fill: lightblue; stroke: black; }</style>
+    <head>
+        <title>Energy Usage Summary</title>
+        <link rel='stylesheet' href='styles.css'>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+    </head>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+
     <body>
-        <svg width=300 height=300>
-        </svg>
-        <script>
-            var data = [4,8,15,16,23,42];
-            var width = 200;
-            var height = 200;
-            var margin = 50;
-            var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,width]);
-            var y = d3.scaleLinear().domain([0,42]).range([height,0]);
-            var ht = d3.scaleLinear().domain([0,42]).range([0,height]);
-            d3.select("svg")
-              .attr("width",width + 2*margin)
-              .attr("height",height + 2*margin)
-              .append("g")
-              .attr("transform","translate(50,50)")
-              .selectAll("rect").data(data).enter().append("rect")
-              .attr("x",function(d,i) { return x(i); })
-              .attr("y",function(d,i) { return y(d); })
-              .attr("width",x.bandwidth())
-              .attr("height", function(d,i) { return ht(d); });
-
-            d3.select("svg")
-              .append("g")
-              .attr("transform","translate(50,50)")
-              .call(d3.axisLeft(y));
-
-            d3.select("svg")
-              .append("g")
-              .attr("transform","translate(50,250)")
-              .call(d3.axisBottom(x));
-        </script>
+        <div class='container-fluid'>
+            <h1>Electricity Usage Analysis</h1>
+            <p>I have been planning on getting solar panels and this is my attempt to analyze my energy consumption for that purpose. I wanted to analyze all the data that was available to me. If you are in the state of Texas in the United States you can go to <a href='https://www.smartmetertexas.com'>Smart Meter Texas</a> and register for a free account. You can download your usage data and track usage as granular as at 15-minute intervals. Data for all the months in past two years: 2018, 2019 is available for download and for current year 2020, upto July. </p>
+            <div class='row'>
+                <div id='container' class='col-lg-6'>
+                    <svg id='summarysvg' width=600 height=600></svg>
+                </div>
+                <div id ='container' class='col-lg-6'>
+                    <svg id='stackedsvg' width=600 height=600></svg>
+                </div>
+            </div>
+        </div>
+        <script src='summary.js'></script>
+        <script src='index.js'></script>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb primary-color">
+                <li class="breadcrumb-item active">Summary</li>
+                <li class="breadcrumb-item"><a class="white-text" href='/reliant/annually/index.html'>Years</a></li>
+                <li class="breadcrumb-item"><a class="white-text" href='/reliantmonthly/index.html'>Months</a></li>
+                <li class="breadcrumb-item"><a class="white-text" href='/reliant/daily/index.html'>Days</a></li>
+            </ol>
+        </nav>
     </body>
 </html>
